@@ -11,5 +11,5 @@
     "url": "https://github.com/visionmedia/cipherhub.sh/issues"
   },
   "homepage": "https://github.com/visionmedia/cipherhub.sh",
-  "bin": "bin/ch"
+  "bin": { "ch": "bin/ch" }
 }

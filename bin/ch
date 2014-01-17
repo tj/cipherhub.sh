@@ -1,5 +1,15 @@
 #!/bin/sh
 
+VERSION="0.0.1"
+
+#
+# Output version
+#
+
+version() {
+  echo $VERSION
+}
+
 #
 # Output usage
 #
@@ -48,6 +58,7 @@ if [[ $# -eq 0 ]]; then
   decrypt
 else
   case $1 in
+    -v|--version) version ;;
     -h|--help) usage ;;
     *) encrypt $1 ;;
   esac
