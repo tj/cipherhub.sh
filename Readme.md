@@ -1,6 +1,8 @@
 
 # cipherhub.sh
 
+  Shell script implementation of [cipherhub](https://github.com/substack/cipherhub).
+
 ## Installation
 
   curl:
