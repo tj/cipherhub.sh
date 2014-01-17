@@ -6,7 +6,6 @@
 
 usage() {
   echo "
-
   Usage: ch [username]
 
   Encrypt:
@@ -48,5 +47,8 @@ decrypt() {
 if [[ $# -eq 0 ]]; then
   decrypt
 else
-  encrypt $1
+  case $1 in
+    -h|--help) usage ;;
+    *) encrypt $1 ;;
+  esac
 fi
