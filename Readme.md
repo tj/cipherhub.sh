@@ -11,6 +11,12 @@
 $ curl -# https://raw.github.com/visionmedia/cipherhub.sh/master/bin/ch > /usr/local/bin/ch && chmod +x /usr/local/bin/ch
 ```
 
+  npm:
+
+```
+$ npm install -g cipherhub.sh
+```
+
 ## Usage
 
 ```
