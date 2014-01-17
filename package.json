@@ -1,0 +1,15 @@
+{
+  "name": "cipherhub.sh",
+  "version": "0.0.1",
+  "description": "shell alternative to substacks cipherhub",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/visionmedia/cipherhub.sh.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/visionmedia/cipherhub.sh/issues"
+  },
+  "homepage": "https://github.com/visionmedia/cipherhub.sh",
+  "bin": "bin/ch"
+}
