@@ -1,0 +1,52 @@
+#!/bin/sh
+
+#
+# Output usage
+#
+
+usage() {
+  echo "
+
+  Usage: ch [username]
+
+  Encrypt:
+
+    $ ch visionmedia < secret.txt > msg
+
+  Decrypt:
+
+    $ ch < msg
+  "
+}
+
+#
+# Encrypt stdin for <user>
+#
+
+encrypt() {
+  user=$1
+  pem=/tmp/$user.pub.pem
+
+  if [[ ! -f $pem ]]; then
+    curl -s https://github.com/$user.keys | grep ssh-rsa | head -n 1 > /tmp/$user.pub
+    test -f $pem || openssl rsa -in ~/.ssh/id_rsa -pubout > $pem
+  fi
+
+  cat | openssl rsautl -encrypt -pubin -inkey $pem
+}
+
+#
+# Decrypt stdin
+#
+
+decrypt() {
+  cat | openssl rsautl -decrypt -inkey ~/.ssh/id_rsa
+}
+
+# argc
+
+if [[ $# -eq 0 ]]; then
+  decrypt
+else
+  encrypt $1
+fi
