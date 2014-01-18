@@ -17,6 +17,15 @@ $ curl -# https://raw.github.com/visionmedia/cipherhub.sh/master/bin/ch > /usr/l
 $ npm install -g cipherhub.sh
 ```
 
+## Example
+
+ Decode a message to yourself:
+
+```
+$ echo 'hello world' | ch <your-username> | ch
+hello world
+```
+
 ## Usage
 
 ```
