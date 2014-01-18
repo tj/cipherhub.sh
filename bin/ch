@@ -41,7 +41,7 @@ encrypt() {
     test -f $pem || openssl rsa -in ~/.ssh/id_rsa -pubout > $pem
   fi
 
-  cat | openssl rsautl -encrypt -pubin -inkey $pem
+  cat | openssl rsautl -encrypt -pubin -inkey $pem | base64
 }
 
 #
@@ -49,7 +49,7 @@ encrypt() {
 #
 
 decrypt() {
-  cat | openssl rsautl -decrypt -inkey ~/.ssh/id_rsa
+  base64 --decode | openssl rsautl -decrypt -inkey ~/.ssh/id_rsa
 }
 
 # argc
