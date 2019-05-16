@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VERSION="0.1.0"
+VERSION="0.2.0"
 
 #
 # Output version
@@ -34,11 +34,12 @@ usage() {
 
 encrypt() {
   user=$1
-  pem=/tmp/$user.pub.pem
+  pub=/tmp/$user.pub
+  pem=$pub.pem
 
   if [[ ! -f $pem ]]; then
-    curl -s https://github.com/$user.keys | grep ssh-rsa | head -n 1 > /tmp/$user.pub
-    test -f $pem || openssl rsa -in ~/.ssh/id_rsa -pubout > $pem
+    curl -s https://github.com/$user.keys | grep ssh-rsa | head -n 1 > $pub
+    test -f $pem || ssh-keygen -f $pub -e -m PKCS8 > $pem
   fi
 
   cat | openssl rsautl -encrypt -pubin -inkey $pem | base64
